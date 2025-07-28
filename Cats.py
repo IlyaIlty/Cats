@@ -13,6 +13,7 @@ def load_image(url):
         responce.raise_for_status()
         image_data = BytesIO(responce.content)
         img = Image.open(image_data)
+        img.thumbnail((600,480), Image.Resampling.LANCZOS)
         return ImageTk.PhotoImage(img)
     except Exception as e:
         print(f'Проищошла ошибка: {e}')
@@ -28,7 +29,7 @@ def set_image():
 
 window = Tk()
 window.title('Cats!')
-window.geometry('600x400')
+window.geometry('600x520')
 
 label = Label()
 label.pack()
